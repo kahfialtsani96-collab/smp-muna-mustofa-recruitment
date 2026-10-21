@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Recruitment | SMP Muna Mustofa Lampung</title>
+    <title>E-Recruitment | SMP Muna Mustofa</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Supabase JS Client CDN -->
@@ -11,140 +11,147 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .hero-bg {
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.85)), 
-                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+        .hero-banner {
+            background: linear-gradient(rgba(15, 60, 60, 0.82), rgba(15, 60, 60, 0.88)), 
+                        url('20260926_081214.jpg') center/cover no-repeat;
         }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- Header / Navbar -->
-    <header class="bg-cyan-800 text-white shadow-md sticky top-0 z-50">
+    <!-- Header / Navbar Tampilan Lama -->
+    <header class="bg-white border-b border-cyan-100 sticky top-0 z-50 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-white text-cyan-800 font-bold rounded-full flex items-center justify-center text-lg shadow">
-                    MM
+                <div class="w-10 h-10 bg-teal-700 text-white font-bold rounded-full flex items-center justify-center text-xl shadow">
+                    <i class="fa-solid fa-graduation-cap"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-base leading-tight">SMP MUNA MUSTOFA</h1>
-                    <p class="text-xs text-cyan-200">Gisting, Tanggamus, Lampung</p>
+                    <h1 class="font-bold text-lg leading-tight text-teal-900 tracking-tight">SMP MUNA MUSTOFA</h1>
+                    <p class="text-xs text-teal-600 font-medium">Kab. Tanggamus, Lampung</p>
                 </div>
             </div>
-            <button onclick="toggleAdminModal()" class="text-xs bg-cyan-900 hover:bg-cyan-950 text-cyan-100 px-3 py-2 rounded-lg font-medium transition flex items-center gap-2">
-                <i class="fa-solid fa-lock text-cyan-400"></i> Admin Panel
-            </button>
+            <div class="flex items-center space-x-3 text-xs sm:text-sm font-semibold">
+                <a href="#beranda" class="text-slate-600 hover:text-teal-700 hidden sm:inline-block"><i class="fa-solid fa-house mr-1"></i> Beranda</a>
+                <a href="#cek-status" class="text-slate-600 hover:text-teal-700 hidden sm:inline-block"><i class="fa-solid fa-magnifying-glass mr-1"></i> Cek Status</a>
+                <button onclick="toggleAdminModal()" class="bg-teal-500 hover:bg-teal-600 text-white px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-user-lock text-xs"></i> Admin
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-bg text-white py-16 px-4 text-center relative shadow-inner">
-        <div class="max-w-3xl mx-auto space-y-4">
-            <span class="inline-block bg-cyan-500/30 text-cyan-200 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm border border-cyan-400/30">
-                Penerimaan Tenaga Pendidik
-            </span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                Mari Bergabung Membangun Generasi Rabbani
-            </h2>
-            <p class="text-slate-200 text-sm sm:text-base max-w-2xl mx-auto">
-                SMP Muna Mustofa membuka kesempatan karir bagi pendidik profesional yang memiliki dedikasi tinggi dan berakhlak mulia.
-            </p>
-            <div class="pt-2">
-                <a href="#form-lamaran" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-semibold text-sm px-6 py-3 rounded-lg shadow-lg hover:shadow-cyan-500/20 transition">
-                    Kirim Lamaran Sekarang <i class="fa-solid fa-arrow-down ml-1"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- Main Content Container -->
-    <main class="max-w-5xl mx-auto px-4 py-10 space-y-12">
+    <main id="beranda" class="max-w-6xl mx-auto px-4 py-6 space-y-8 flex-1 w-full">
 
-        <!-- Lowongan Kerja & Requirements -->
-        <section class="grid md:grid-cols-2 gap-6">
-            <!-- Form Lowongan Tersedia -->
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="p-3 bg-cyan-100 text-cyan-800 rounded-lg">
-                        <i class="fa-solid fa-briefcase text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-800">Lowongan Tersedia</h3>
-                        <p class="text-xs text-slate-500">Posisi pendidik yang sedang dibuka</p>
-                    </div>
+        <!-- Hero Card Tampilan Lama -->
+        <section class="hero-banner rounded-2xl p-6 sm:p-12 text-white shadow-xl relative overflow-hidden">
+            <div class="max-w-2xl space-y-4">
+                <span class="inline-block bg-teal-500/40 text-teal-200 text-xs font-bold px-3 py-1 rounded-full border border-teal-300/30 uppercase tracking-wider">
+                    Penerimaan Tenaga Pendidik 2026
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold uppercase leading-tight tracking-tight">
+                    OPEN RECRUITMENT GURU SMP MUNA MUSTOFA LAMPUNG
+                </h2>
+                <p class="text-slate-200 text-xs sm:text-sm leading-relaxed">
+                    Bergabunglah dengan Tim Pendidik kami untuk mencetak generasi Islami, unggul, dan berprestasi.
+                </p>
+                <div class="pt-3 flex flex-wrap gap-3">
+                    <a href="#form-lamaran" class="bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-lg shadow-lg transition flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Daftar Sekarang
+                    </a>
+                    <a href="#cek-status" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-bold text-xs sm:text-sm px-5 py-2.5 rounded-lg backdrop-blur-sm transition flex items-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass"></i> Cek Status Lamaran
+                    </a>
                 </div>
+            </div>
+        </section>
+
+        <!-- Lowongan & Requirements Tampilan Lama -->
+        <section class="grid md:grid-cols-3 gap-6">
+            <!-- Kolom Posisi Dibuka -->
+            <div class="md:col-span-1 space-y-4">
+                <h3 class="font-bold text-lg text-slate-800 border-l-4 border-teal-600 pl-3">Posisi Dibuka</h3>
                 <div class="space-y-3">
-                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
-                        <div>
-                            <h4 class="font-bold text-slate-800">Guru PPKN</h4>
-                            <p class="text-xs text-slate-500">Pendidikan Pancasila & Kewarganegaraan</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[11px] font-semibold bg-teal-100 text-teal-800 px-2.5 py-0.5 rounded-full">Pengajar</span>
+                            <i class="fa-solid fa-book-open text-teal-600 text-lg"></i>
                         </div>
-                        <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded-full">Aktif</span>
+                        <h4 class="font-bold text-slate-800 text-base">Guru PPKN</h4>
+                        <p class="text-xs text-slate-400 mt-2"><i class="fa-regular fa-clock mr-1"></i> Batas Lamaran: 31 Oktober 2026</p>
                     </div>
-                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
-                        <div>
-                            <h4 class="font-bold text-slate-800">Guru IPS</h4>
-                            <p class="text-xs text-slate-500">Ilmu Pengetahuan Sosial</p>
+
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[11px] font-semibold bg-teal-100 text-teal-800 px-2.5 py-0.5 rounded-full">Pengajar</span>
+                            <i class="fa-solid fa-globe text-teal-600 text-lg"></i>
                         </div>
-                        <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded-full">Aktif</span>
+                        <h4 class="font-bold text-slate-800 text-base">Guru IPS</h4>
+                        <p class="text-xs text-slate-400 mt-2"><i class="fa-regular fa-clock mr-1"></i> Batas Lamaran: 31 Oktober 2026</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Persyaratan & Ketentuan Dokumen -->
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="p-3 bg-amber-100 text-amber-800 rounded-lg">
-                        <i class="fa-solid fa-shield-halved text-xl"></i>
+            <!-- Kolom Persyaratan & Kriteria -->
+            <div class="md:col-span-2 space-y-4">
+                <h3 class="font-bold text-lg text-slate-800 border-l-4 border-teal-600 pl-3">Persyaratan & Kriteria</h3>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="bg-amber-50/60 border border-amber-200/80 p-4 rounded-xl space-y-2">
+                        <h4 class="font-bold text-amber-900 text-xs uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-folder-open text-amber-700"></i> Persyaratan Administrasi Online
+                        </h4>
+                        <ul class="text-xs text-slate-700 space-y-1.5 pt-1">
+                            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> Surat Lamaran Kerja</li>
+                            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> Curriculum Vitae (CV) Terkini</li>
+                            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> Berkas digabung format <strong>PDF (Maks 5MB)</strong></li>
+                        </ul>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-800">Ketentuan & Keamanan Data</h3>
-                        <p class="text-xs text-slate-500">Perhatikan sebelum mengunggah</p>
+
+                    <div class="bg-slate-100 border border-slate-200 p-4 rounded-xl space-y-2">
+                        <h4 class="font-bold text-slate-800 text-xs uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-user-check text-teal-700"></i> Kriteria Kualifikasi
+                        </h4>
+                        <ul class="text-xs text-slate-700 space-y-1.5 pt-1">
+                            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> Muslim / Muslimah</li>
+                            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> Maksimal Umur 30 Tahun</li>
+                            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> Pendidikan Min. S1 Sesuai Jurusan</li>
+                        </ul>
                     </div>
                 </div>
-                <ul class="text-xs sm:text-sm text-slate-600 space-y-2.5">
-                    <li class="flex items-start gap-2">
-                        <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                        <span>Web rekrutmen ini hanya meminta <strong>Surat Lamaran & CV (PDF)</strong> untuk tahap seleksi awal.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                        <span>Dokumen fisik sensitif (KTP, Ijazah, Transkrip Nilai) <strong>tidak perlu diunggah online</strong>. Dokumen tersebut diserahkan langsung saat panggilan wawancara offline.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                        <span>Satu pelamar hanya diperbolehkan mendaftar 1 kali pada posisi tertentu.</span>
-                    </li>
-                </ul>
             </div>
         </section>
 
         <!-- Form Pendaftaran -->
-        <section id="form-lamaran" class="bg-white p-6 sm:p-8 rounded-xl shadow-md border border-slate-200 max-w-3xl mx-auto">
-            <h3 class="text-xl font-bold text-slate-800 mb-2 border-b pb-3">Formulir Pendaftaran Guru</h3>
-            <form id="applicantForm" class="space-y-5 pt-2">
+        <section id="form-lamaran" class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200 max-w-3xl mx-auto">
+            <div class="border-b pb-4 mb-6">
+                <h3 class="text-xl font-bold text-teal-900">Formulir Pendaftaran Online</h3>
+                <p class="text-xs text-slate-500">Isi data diri Anda secara jujur dan unggah berkas lamaran format PDF.</p>
+            </div>
+
+            <form id="applicantForm" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Nama Lengkap *</label>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Nama Lengkap & Gelar *</label>
                     <input type="text" id="fullName" required placeholder="Contoh: Ahmad Fauzi, S.Pd." 
-                        class="w-full text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-600">
+                        class="w-full text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-600">
                 </div>
 
                 <div class="grid sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Nomor WhatsApp *</label>
                         <input type="tel" id="whatsapp" required placeholder="08xxxxxxxxxx" 
-                            class="w-full text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-600">
+                            class="w-full text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-600">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Email *</label>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Email Aktif *</label>
                         <input type="email" id="email" required placeholder="email@contoh.com" 
-                            class="w-full text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-600">
+                            class="w-full text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-600">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Posisi yang Dilamar *</label>
-                    <select id="position" required class="w-full text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-600 bg-white">
+                    <select id="position" required class="w-full text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-600 bg-white">
                         <option value="">-- Pilih Posisi Guru --</option>
                         <option value="Guru PPKN">Guru PPKN</option>
                         <option value="Guru IPS">Guru IPS</option>
@@ -152,26 +159,26 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Berkas Lamaran & CV (Format PDF, Maks 5MB) *</label>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Berkas Surat Lamaran & CV (PDF, Maks 5MB) *</label>
                     <input type="file" id="cvFile" accept=".pdf" required
-                        class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 border border-slate-300 rounded-lg cursor-pointer">
+                        class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 border border-slate-300 rounded-lg cursor-pointer">
                 </div>
 
-                <button type="submit" id="submitBtn" class="w-full bg-cyan-700 hover:bg-cyan-800 text-white font-semibold text-sm py-3 rounded-lg shadow transition flex justify-center items-center gap-2">
+                <button type="submit" id="submitBtn" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm py-3 rounded-lg shadow transition flex justify-center items-center gap-2">
                     <i class="fa-solid fa-paper-plane"></i> Kirim Berkas Lamaran
                 </button>
             </form>
         </section>
 
         <!-- Cek Status Pendaftaran -->
-        <section class="bg-slate-100 p-6 rounded-xl border border-slate-200 max-w-2xl mx-auto">
-            <h4 class="font-bold text-slate-800 text-center mb-1">Cek Status Lamaran</h4>
-            <p class="text-xs text-slate-500 text-center mb-4">Masukkan Nomor WhatsApp yang terdaftar untuk memeriksa progres lamaran Anda.</p>
+        <section id="cek-status" class="bg-teal-50/70 p-6 rounded-2xl border border-teal-100 max-w-2xl mx-auto">
+            <h4 class="font-bold text-teal-900 text-center text-base mb-1">Cek Status Lamaran</h4>
+            <p class="text-xs text-slate-500 text-center mb-4">Masukkan Nomor WhatsApp terdaftar untuk melihat progres lamaran Anda.</p>
             
             <div class="flex gap-2">
-                <input type="tel" id="checkWA" placeholder="Masukkan No. WA Anda..." 
-                    class="flex-1 text-sm border border-slate-300 rounded-lg px-3.5 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-600">
-                <button onclick="checkStatus()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold px-4 py-2 rounded-lg transition">
+                <input type="tel" id="checkWA" placeholder="Contoh: 08123456789" 
+                    class="flex-1 text-sm border border-slate-300 rounded-lg px-3.5 py-2 focus:outline-none focus:ring-2 focus:ring-teal-600">
+                <button onclick="checkStatus()" class="bg-teal-800 hover:bg-teal-900 text-white text-xs font-bold px-4 py-2 rounded-lg transition">
                     Cek Status
                 </button>
             </div>
@@ -180,19 +187,19 @@
 
     </main>
 
-    <!-- Modal Admin Login & Dashboard -->
+    <!-- Modal Admin Panel -->
     <div id="adminModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-4xl rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div class="bg-cyan-800 text-white p-4 flex justify-between items-center">
+        <div class="bg-white w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-teal-800 text-white p-4 flex justify-between items-center">
                 <h3 class="font-bold text-sm sm:text-base"><i class="fa-solid fa-user-shield mr-2"></i> Panel Kelola Pendaftar (Admin)</h3>
-                <button onclick="toggleAdminModal()" class="text-cyan-200 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+                <button onclick="toggleAdminModal()" class="text-teal-200 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <div id="adminLoginArea" class="p-6 max-w-md mx-auto w-full space-y-4">
-                <p class="text-xs text-slate-500 text-center">Silakan masukkan password admin untuk mengakses data pelamar.</p>
+                <p class="text-xs text-slate-500 text-center">Silakan masukkan password admin untuk mengelola pendaftar.</p>
                 <input type="password" id="adminPassword" placeholder="Masukkan Password Admin" 
-                    class="w-full text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-600">
-                <button onclick="loginAdmin()" class="w-full bg-cyan-700 hover:bg-cyan-800 text-white text-sm font-semibold py-2.5 rounded-lg transition">
+                    class="w-full text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-600">
+                <button onclick="loginAdmin()" class="w-full bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold py-2.5 rounded-lg transition">
                     Masuk Panel
                 </button>
             </div>
@@ -200,23 +207,23 @@
             <div id="adminDashboard" class="p-6 hidden overflow-y-auto space-y-4">
                 <div class="flex justify-between items-center border-b pb-3">
                     <span class="text-xs font-bold text-slate-600 uppercase">Daftar Pelamar Masuk</span>
-                    <button onclick="logoutAdmin()" class="text-xs text-rose-600 hover:underline">Keluar</button>
+                    <button onclick="logoutAdmin()" class="text-xs text-rose-600 hover:underline font-semibold">Keluar Panel</button>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-xs text-left text-slate-600 border">
                         <thead class="bg-slate-100 text-slate-700 uppercase">
                             <tr>
-                                <th class="p-2.5 border">Tgl</th>
-                                <th class="p-2.5 border">Nama</th>
+                                <th class="p-2.5 border">Tanggal</th>
+                                <th class="p-2.5 border">Nama Pelamar</th>
                                 <th class="p-2.5 border">Posisi</th>
                                 <th class="p-2.5 border">No. WA</th>
-                                <th class="p-2.5 border">CV</th>
+                                <th class="p-2.5 border">Berkas CV</th>
                                 <th class="p-2.5 border">Status</th>
                                 <th class="p-2.5 border">Aksi</th>
                             </tr>
                         </thead>
                         <tbody id="applicantTableBody">
-                            <!-- Data pelamar akan dimuat otomatis di sini -->
+                            <!-- Data dimuat otomatis -->
                         </tbody>
                     </table>
                 </div>
@@ -231,7 +238,7 @@
 
     <!-- Script Supabase Integration -->
     <script>
-        // Kunci Akses Supabase
+        // Supabase Project Credentials
         const SUPABASE_URL = "https://mxejerqihuloesyldiqs.supabase.co";
         const SUPABASE_ANON_KEY = "sb_publishable_NbzBwAN77eAL0N0J5mWR9Q_tN2xeYYb";
 
@@ -246,7 +253,7 @@
             submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...`;
 
             try {
-                const fullName = document.getElementById('fullName').value;
+                const fullName = document.getElementById('fullName').value.trim();
                 const whatsapp = document.getElementById('whatsapp').value.trim();
                 const email = document.getElementById('email').value.trim();
                 const position = document.getElementById('position').value;
@@ -257,7 +264,7 @@
                     return;
                 }
 
-                // Anti-Spam / Duplikasi: Cek apakah No WA sudah pernah mendaftar posisi yang sama
+                // Cek Duplikasi
                 const { data: existingApp } = await supabaseClient
                     .from('applicants')
                     .select('*')
@@ -265,7 +272,7 @@
                     .eq('position', position);
 
                 if (existingApp && existingApp.length > 0) {
-                    alert("Nomor WhatsApp ini sudah pernah mengirimkan lamaran untuk posisi " + position + "!");
+                    alert("Nomor WhatsApp ini sudah pernah mendaftar posisi " + position + "!");
                     return;
                 }
 
@@ -277,14 +284,14 @@
 
                 if (storageError) throw storageError;
 
-                // Dapatkan Public URL File CV
+                // Public URL File CV
                 const { data: publicUrlData } = supabaseClient.storage
                     .from('cv_files')
                     .getPublicUrl(fileName);
 
                 const cvUrl = publicUrlData.publicUrl;
 
-                // 2. Simpan Data Pelamar ke Database Supabase (Table: applicants)
+                // 2. Insert Database (Table: applicants)
                 const { data, error } = await supabaseClient
                     .from('applicants')
                     .insert([
@@ -312,7 +319,7 @@
             }
         });
 
-        // Cek Status Pendaftaran oleh Pelamar
+        // Cek Status
         async function checkStatus() {
             const wa = document.getElementById('checkWA').value.trim();
             const resultDiv = document.getElementById('statusResult');
@@ -344,7 +351,7 @@
                             <p class="font-bold text-slate-800">${item.position}</p>
                             <p class="text-slate-500">${item.full_name}</p>
                         </div>
-                        <span class="px-2.5 py-1 rounded-full font-semibold text-[11px] bg-cyan-100 text-cyan-800">
+                        <span class="px-2.5 py-1 rounded-full font-semibold text-[11px] bg-teal-100 text-teal-800">
                             ${item.status}
                         </span>
                     </div>
@@ -360,14 +367,14 @@
         }
 
         function loginAdmin() {
-            const passInput = document.getElementById('adminPassword').value.trim();
-            // Password diset: admin123
-            if (passInput === "munamustofa1922") {
+            const pass = document.getElementById('adminPassword').value.trim();
+            // Password Admin: munamustofa1922
+            if (pass === "munamustofa1922") {
                 document.getElementById('adminLoginArea').classList.add('hidden');
                 document.getElementById('adminDashboard').classList.remove('hidden');
                 loadAdminData();
             } else {
-                alert("Password Admin Salah! Password yang benar: admin123");
+                alert("Password Admin Salah!");
             }
         }
 
@@ -400,7 +407,7 @@
                         <td class="p-2.5 border">${item.position}</td>
                         <td class="p-2.5 border">${item.whatsapp}</td>
                         <td class="p-2.5 border">
-                            <a href="${item.cv_url}" target="_blank" class="text-cyan-600 hover:underline"><i class="fa-solid fa-file-pdf"></i> Lihat CV</a>
+                            <a href="${item.cv_url}" target="_blank" class="text-teal-600 font-semibold hover:underline"><i class="fa-solid fa-file-pdf"></i> Lihat CV</a>
                         </td>
                         <td class="p-2.5 border font-bold">${item.status}</td>
                         <td class="p-2.5 border space-x-1">
