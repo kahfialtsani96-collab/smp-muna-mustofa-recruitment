@@ -32,7 +32,7 @@
                 </div>
             </div>
             <button onclick="toggleAdminModal()" class="text-xs bg-cyan-900 hover:bg-cyan-950 text-cyan-100 px-3 py-2 rounded-lg font-medium transition flex items-center gap-2">
-                <i class="fa-solid fa-lock">="text-cyan-400"></i> Admin Panel
+                <i class="fa-solid fa-lock text-cyan-400"></i> Admin Panel
             </button>
         </div>
     </header>
@@ -231,12 +231,12 @@
 
     <!-- Script Supabase Integration -->
     <script>
-        // MASUKKAN SUPABASE URL & SUPABASE ANON KEY ANDA DI SINI
-        const SUPABASE_URL = "ISI_SUPABASE_URL_ANDA_DI_SINI";
-        const SUPABASE_ANON_KEY = "ISI_SUPABASE_ANON_KEY_ANDA_DI_SINI";
+        // Kunci Akses Supabase
+        const SUPABASE_URL = "https://tN2xeYYb.supabase.co"; // URL Proyek Supabase
+        const SUPABASE_ANON_KEY = "sb_publishable_NbzBwAN77eAL0N0J5mWR9Q_tN2xeYYb";
 
-        // Inisialisasi Supabase
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // Inisialisasi Supabase Client
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Submit Form Lamaran
         document.getElementById('applicantForm').addEventListener('submit', async (e) => {
@@ -257,23 +257,35 @@
                     return;
                 }
 
+                // Anti-Spam / Duplikasi: Cek apakah No WA sudah pernah mendaftar posisi yang sama
+                const { data: existingApp } = await supabaseClient
+                    .from('applicants')
+                    .select('*')
+                    .eq('whatsapp', whatsapp)
+                    .eq('position', position);
+
+                if (existingApp && existingApp.length > 0) {
+                    alert("Nomor WhatsApp ini sudah pernah mengirimkan lamaran untuk posisi " + position + "!");
+                    return;
+                }
+
                 // 1. Upload File CV ke Supabase Storage (Bucket: cv_files)
-                const fileName = `${Date.now()}_${whatsapp}_${fileInput.name}`;
-                const { data: storageData, error: storageError } = await supabase.storage
+                const fileName = `${Date.now()}_${whatsapp}_${fileInput.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+                const { data: storageData, error: storageError } = await supabaseClient.storage
                     .from('cv_files')
                     .upload(fileName, fileInput);
 
                 if (storageError) throw storageError;
 
                 // Dapatkan Public URL File CV
-                const { data: publicUrlData } = supabase.storage
+                const { data: publicUrlData } = supabaseClient.storage
                     .from('cv_files')
                     .getPublicUrl(fileName);
 
                 const cvUrl = publicUrlData.publicUrl;
 
                 // 2. Simpan Data Pelamar ke Database Supabase (Table: applicants)
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('applicants')
                     .insert([
                         { 
@@ -310,7 +322,7 @@
                 return;
             }
 
-            const { data, error } = await supabase
+            const { data, error } = await supabaseClient
                 .from('applicants')
                 .select('*')
                 .eq('whatsapp', wa);
@@ -349,7 +361,7 @@
 
         function loginAdmin() {
             const pass = document.getElementById('adminPassword').value;
-            if (pass === "admin123") { // Password Admin Sederhana
+            if (pass === "admin123") { // Password Admin
                 document.getElementById('adminLoginArea').classList.add('hidden');
                 document.getElementById('adminDashboard').classList.remove('hidden');
                 loadAdminData();
@@ -365,7 +377,7 @@
         }
 
         async function loadAdminData() {
-            const { data, error } = await supabase
+            const { data, error } = await supabaseClient
                 .from('applicants')
                 .select('*')
                 .order('created_at', { ascending: false });
@@ -379,7 +391,7 @@
             }
 
             data.forEach(item => {
-                const date = new Date(item.created_at).toLocaleDateString('id-ID');
+                const date = new Date(item.created_at || Date.now()).toLocaleDateString('id-ID');
                 tbody.innerHTML += `
                     <tr class="hover:bg-slate-50">
                         <td class="p-2.5 border">${date}</td>
@@ -390,9 +402,10 @@
                             <a href="${item.cv_url}" target="_blank" class="text-cyan-600 hover:underline"><i class="fa-solid fa-file-pdf"></i> Lihat CV</a>
                         </td>
                         <td class="p-2.5 border font-bold">${item.status}</td>
-                        <td class="p-2.5 border">
+                        <td class="p-2.5 border space-x-1">
                             <button onclick="updateStatus('${item.id}', 'Diproses')" class="text-[10px] bg-blue-100 text-blue-700 px-2 py-1 rounded">Proses</button>
                             <button onclick="updateStatus('${item.id}', 'Diterima')" class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-1 rounded">Terima</button>
+                            <button onclick="deleteApplicant('${item.id}')" class="text-[10px] bg-rose-100 text-rose-700 px-2 py-1 rounded"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                 `;
@@ -400,11 +413,21 @@
         }
 
         async function updateStatus(id, newStatus) {
-            await supabase
+            await supabaseClient
                 .from('applicants')
                 .update({ status: newStatus })
                 .eq('id', id);
             loadAdminData();
+        }
+
+        async function deleteApplicant(id) {
+            if (confirm("Apakah Anda yakin ingin menghapus data pelamar ini?")) {
+                await supabaseClient
+                    .from('applicants')
+                    .delete()
+                    .eq('id', id);
+                loadAdminData();
+            }
         }
     </script>
 </body>
